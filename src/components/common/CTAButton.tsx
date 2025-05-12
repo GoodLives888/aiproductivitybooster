@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; // Assuming internal links, use <a> for external
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 interface CTAButtonProps {
@@ -11,7 +11,7 @@ interface CTAButtonProps {
   id?: string;
   type?: 'button' | 'submit' | 'reset';
   onClick?: (event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
-  isExternal?: boolean; // Added to differentiate between internal and external links
+  isExternal?: boolean;
 }
 
 const CTAButton: React.FC<CTAButtonProps> = ({
@@ -25,7 +25,7 @@ const CTAButton: React.FC<CTAButtonProps> = ({
   onClick,
   isExternal = false,
 }) => {
-  const baseStyle = 
+  const baseStyle =
     'font-semibold rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all duration-300 ease-in-out inline-flex items-center justify-center shadow-md hover:shadow-lg';
 
   let variantStyle = '';
@@ -37,7 +37,7 @@ const CTAButton: React.FC<CTAButtonProps> = ({
       variantStyle = 'bg-brand-secondary text-white hover:bg-opacity-90 focus:ring-brand-secondary';
       break;
     case 'outline':
-      variantStyle = 
+      variantStyle =
         'border-2 border-brand-accent text-brand-accent hover:bg-brand-accent hover:text-white focus:ring-brand-accent';
       break;
     case 'ghost':
@@ -68,8 +68,7 @@ const CTAButton: React.FC<CTAButtonProps> = ({
     <motion.span
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
-      className=
-block" // Ensure span takes up space for layout
+      className="block" // Corrected this line
     >
       {text}
     </motion.span>
@@ -83,28 +82,26 @@ block" // Ensure span takes up space for layout
         className={combinedClassName}
         target="_blank"
         rel="noopener noreferrer"
-        onClick={onClick as React.MouseEventHandler<HTMLAnchorElement>} // Type assertion
+        onClick={onClick as React.MouseEventHandler<HTMLAnchorElement>}
       >
         {buttonContent}
       </motion.a>
     );
   }
 
-  // If it's a submit button or has an onClick handler, render as a button element
   if (type === 'submit' || (onClick && !href.startsWith('#') && !href.startsWith('/'))) {
     return (
       <motion.button
         type={type}
         id={id}
         className={combinedClassName}
-        onClick={onClick as React.MouseEventHandler<HTMLButtonElement>} // Type assertion
+        onClick={onClick as React.MouseEventHandler<HTMLButtonElement>}
       >
         {buttonContent}
       </motion.button>
     );
   }
 
-  // Otherwise, render as a Link for internal navigation
   return (
     <Link to={href} id={id} className={combinedClassName}>
       {buttonContent}
