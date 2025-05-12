@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { Menu, X, Home, Info, Mail, FileText, Rss, Search, Settings, Zap, Brain } from 'lucide-react'; // Added icons
+import { Menu, X, Home, Info, Mail, Rss, Search, Zap, } from 'lucide-react'; // Added icons
 
 const Header: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);

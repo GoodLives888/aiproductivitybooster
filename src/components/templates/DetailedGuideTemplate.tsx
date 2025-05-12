@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Code, Image as ImageIcon } from 'lucide-react';
+import { ExternalLink, Code } from 'lucide-react';
 
 interface DetailedGuideProps {
   title: string;
@@ -86,7 +86,7 @@ const DetailedGuideTemplate: React.FC<DetailedGuideProps> = ({
         ))}
       </motion.section>
 
-      {sections.map((section, sectionIndex) => (
+      {sections.map((section, _sectionIndex) => (
         <motion.section 
           key={section.id} 
           className="mb-10"
