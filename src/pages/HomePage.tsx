@@ -1,8 +1,8 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import CTAButton from '../../components/common/CTAButton'; // .tsx extension removed
+import CTAButton from '../../components/common/CTAButton';
 import aiHeroGraphic from '../../assets/images/ai_hero_graphic_sample_1.png';
-import { motion } from 'framer-motion'; // For animations
+import { motion } from 'framer-motion';
 
 const HomePage: React.FC = () => {
   const sectionVariants = {
@@ -15,10 +15,8 @@ const HomePage: React.FC = () => {
       <Helmet>
         <title>AI Productivity Booster | Supercharge Your Workflow</title>
         <meta name="description" content="Discover the best AI tools and strategies to streamline your workflow, save time, and achieve more. Boost your productivity with AIProductivityBooster.com." />
-        {/* Add other relevant meta tags like Open Graph, Twitter Cards later if needed */}
       </Helmet>
       <div className="min-h-screen bg-background-main text-text-primary font-sans overflow-x-hidden">
-        {/* Hero Section */}
         <motion.section 
           className="relative bg-brand-primary text-white py-24 md:py-40 px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center text-center min-h-[60vh] md:min-h-[75vh] overflow-hidden"
           initial="hidden"
@@ -62,7 +60,6 @@ const HomePage: React.FC = () => {
           </div>
         </motion.section>
 
-        {/* Lead Capture / Newsletter Signup Section */}
         <motion.section
           className="py-20 md:py-28 bg-background-main px-4 sm:px-6 lg:px-8"
           initial="hidden"
@@ -94,7 +91,6 @@ const HomePage: React.FC = () => {
           </div>
         </motion.section>
 
-        {/* Featured AI Tools Section */}
         <motion.section 
           className="py-20 md:py-28 bg-background-alt px-4 sm:px-6 lg:px-8"
           initial="hidden"
@@ -113,7 +109,6 @@ const HomePage: React.FC = () => {
           </div>
         </motion.section>
 
-        {/* Main CTA Section */}
         <motion.section 
           className="py-20 md:py-28 bg-brand-secondary text-white px-4 sm:px-6 lg:px-8"
           initial="hidden"
@@ -137,7 +132,6 @@ const HomePage: React.FC = () => {
           </div>
         </motion.section>
 
-        {/* Special Offer Section */}
         <motion.section 
           className="py-16 bg-background-main px-4 sm:px-6 lg:px-8"
           initial="hidden"
@@ -152,7 +146,6 @@ const HomePage: React.FC = () => {
           </div>
         </motion.section>
 
-        {/* Social Proof Section */}
         <motion.section 
           className="py-20 md:py-28 bg-background-alt px-4 sm:px-6 lg:px-8"
           initial="hidden"
