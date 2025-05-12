@@ -68,7 +68,7 @@ const CTAButton: React.FC<CTAButtonProps> = ({
     <motion.span
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
-      className="block" // Corrected this line
+      className="block"
     >
       {text}
     </motion.span>
