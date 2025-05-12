@@ -153,7 +153,7 @@ const ProductReviewTemplate: React.FC<ProductReviewProps> = ({
           <ul className="space-y-3 text-text-primary">
             {cons.map((con, index) => (
               <motion.li key={`con-${index}`} className="flex items-start" variants={itemVariants} transition={{ delay: index * 0.1 }}>
-                //<X size={18} className="text-red-500 mr-3 mt-1 flex-shrink-0" /> {/* Using X from lucide for cons */}
+               {/* Using X from lucide for cons */}
                 <span>{con}</span>
               </motion.li>
             ))}
