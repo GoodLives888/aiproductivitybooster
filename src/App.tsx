@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async'; // Ensures HelmetProvider is imported
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import HomePage from './pages/HomePage';
@@ -11,7 +12,7 @@ import BlogPostPage from './pages/BlogPostPage';
 
 const App: React.FC = () => {
   return (
-    <HelmetProvider>
+    <HelmetProvider> {/* Ensures the app is wrapped with HelmetProvider */}
       <Router>
         <div className="flex flex-col min-h-screen bg-background-main">
           <Header />
@@ -39,8 +40,7 @@ const App: React.FC = () => {
         </div>
       </Router>
     </HelmetProvider>
-  );
+  ) ;
 };
 
 export default App;
-

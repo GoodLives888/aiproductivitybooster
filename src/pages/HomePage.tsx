@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import CTAButton from '../../components/common/CTAButton';
+import CTAButton from '../../components/common/CTAButton.tsx'; // Added .tsx extension
 import aiHeroGraphic from '../../assets/images/ai_hero_graphic_sample_1.png';
 import { motion } from 'framer-motion'; // For animations
 
@@ -187,4 +187,3 @@ const HomePage: React.FC = () => {
 };
 
 export default HomePage;
-
