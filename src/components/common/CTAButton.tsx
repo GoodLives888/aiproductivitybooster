@@ -1,12 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; // Assuming internal links, use <a> for external
+import { motion } from 'framer-motion';
 
 interface CTAButtonProps {
   href: string;
   text: string;
-  variant?: 'primary' | 'secondary' | 'outline'; // For A/B testing different styles
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
   className?: string;
-  id?: string; // For A/B testing tracking
+  id?: string;
+  type?: 'button' | 'submit' | 'reset';
+  onClick?: (event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
+  isExternal?: boolean; // Added to differentiate between internal and external links
 }
 
 const CTAButton: React.FC<CTAButtonProps> = ({
@@ -15,41 +20,96 @@ const CTAButton: React.FC<CTAButtonProps> = ({
   variant = 'primary',
   size = 'md',
   className = '',
-  id
+  id,
+  type = 'button',
+  onClick,
+  isExternal = false,
 }) => {
-  let baseClasses = 'font-bold font-heading py-3 px-8 rounded-lg transition-all duration-300 ease-in-out shadow-md hover:shadow-lg transform hover:scale-105';
-  
-  if (variant === 'primary') {
-    baseClasses += ' bg-brand-accent text-white hover:bg-opacity-90';
-  } else if (variant === 'secondary') {
-    baseClasses += ' bg-brand-secondary text-white hover:bg-opacity-90';
-  } else if (variant === 'outline') {
-    baseClasses += ' bg-transparent text-brand-accent border-2 border-brand-accent hover:bg-brand-accent hover:text-white';
+  const baseStyle = 
+    'font-semibold rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all duration-300 ease-in-out inline-flex items-center justify-center shadow-md hover:shadow-lg';
+
+  let variantStyle = '';
+  switch (variant) {
+    case 'primary':
+      variantStyle = 'bg-brand-accent text-white hover:bg-opacity-90 focus:ring-brand-accent';
+      break;
+    case 'secondary':
+      variantStyle = 'bg-brand-secondary text-white hover:bg-opacity-90 focus:ring-brand-secondary';
+      break;
+    case 'outline':
+      variantStyle = 
+        'border-2 border-brand-accent text-brand-accent hover:bg-brand-accent hover:text-white focus:ring-brand-accent';
+      break;
+    case 'ghost':
+      variantStyle = 'text-brand-accent hover:bg-brand-accent hover:bg-opacity-10 focus:ring-brand-accent';
+      break;
+    default:
+      variantStyle = 'bg-brand-accent text-white hover:bg-opacity-90 focus:ring-brand-accent';
   }
 
-  if (size === 'sm') {
-    baseClasses += ' text-sm py-2 px-4';
-  } else if (size === 'lg') {
-    baseClasses += ' text-xl py-4 px-10';
+  let sizeStyle = '';
+  switch (size) {
+    case 'sm':
+      sizeStyle = 'px-4 py-2 text-sm';
+      break;
+    case 'md':
+      sizeStyle = 'px-6 py-3 text-base';
+      break;
+    case 'lg':
+      sizeStyle = 'px-8 py-4 text-lg';
+      break;
+    default:
+      sizeStyle = 'px-6 py-3 text-base';
   }
 
-  return (
-    <a 
-      href={href}
-      className={`${baseClasses} ${className}`}
-      target={href.startsWith('#') ? '_self' : '_blank'} 
-      rel={href.startsWith('#') ? '' : 'noopener noreferrer nofollow'}
-      id={id}
+  const combinedClassName = `${baseStyle} ${variantStyle} ${sizeStyle} ${className}`.trim();
+
+  const buttonContent = (
+    <motion.span
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      className=
+block" // Ensure span takes up space for layout
     >
       {text}
-    </a>
+    </motion.span>
+  );
+
+  if (isExternal) {
+    return (
+      <motion.a
+        href={href}
+        id={id}
+        className={combinedClassName}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={onClick as React.MouseEventHandler<HTMLAnchorElement>} // Type assertion
+      >
+        {buttonContent}
+      </motion.a>
+    );
+  }
+
+  // If it's a submit button or has an onClick handler, render as a button element
+  if (type === 'submit' || (onClick && !href.startsWith('#') && !href.startsWith('/'))) {
+    return (
+      <motion.button
+        type={type}
+        id={id}
+        className={combinedClassName}
+        onClick={onClick as React.MouseEventHandler<HTMLButtonElement>} // Type assertion
+      >
+        {buttonContent}
+      </motion.button>
+    );
+  }
+
+  // Otherwise, render as a Link for internal navigation
+  return (
+    <Link to={href} id={id} className={combinedClassName}>
+      {buttonContent}
+    </Link>
   );
 };
 
 export default CTAButton;
-
-// Example Usage:
-/*
-<CTAButton href="#subscribe" text="Subscribe Now" variant="primary" id="cta-subscribe-hero" />
-<CTAButton href="/features" text="Learn More" variant="outline" size="sm" />
-*/
