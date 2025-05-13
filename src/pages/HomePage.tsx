@@ -1,8 +1,8 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import CTAButton from '../../components/common/CTAButton';
+// import CTAButton from '../../components/common/CTAButton'; // CTAButton import commented out
 import aiHeroGraphic from '../../assets/images/ai_hero_graphic_sample_1.png';
-import { motion } from 'framer-motion';
+import { motion } from 'framer-motion'; // For animations
 
 const HomePage: React.FC = () => {
   const sectionVariants = {
@@ -17,6 +17,7 @@ const HomePage: React.FC = () => {
         <meta name="description" content="Discover the best AI tools and strategies to streamline your workflow, save time, and achieve more. Boost your productivity with AIProductivityBooster.com." />
       </Helmet>
       <div className="min-h-screen bg-background-main text-text-primary font-sans overflow-x-hidden">
+        {/* Hero Section */}
         <motion.section 
           className="relative bg-brand-primary text-white py-24 md:py-40 px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center text-center min-h-[60vh] md:min-h-[75vh] overflow-hidden"
           initial="hidden"
@@ -43,7 +44,7 @@ const HomePage: React.FC = () => {
             >
               Discover the best AI tools and strategies to streamline your workflow, save time, and achieve more.
             </motion.p>
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.6, type: "spring", stiffness: 120 }}
@@ -56,10 +57,12 @@ const HomePage: React.FC = () => {
                 id="cta-hero-explore"
                 className="shadow-xl transform hover:scale-105 transition-transform duration-200"
               />
-            </motion.div>
+            </motion.div> */}
+            {/* CTAButton instance commented out */}
           </div>
         </motion.section>
 
+        {/* Lead Capture / Newsletter Signup Section */}
         <motion.section
           className="py-20 md:py-28 bg-background-main px-4 sm:px-6 lg:px-8"
           initial="hidden"
@@ -79,18 +82,23 @@ const HomePage: React.FC = () => {
                 className="flex-grow p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-brand-accent focus:border-transparent outline-none transition-all duration-200 ease-in-out shadow-sm"
                 aria-label="Email address for newsletter"
               />
-              <CTAButton 
+              {/* <CTAButton 
                 type="submit" 
                 text="Subscribe Now" 
                 variant="primary"
                 id="cta-newsletter-subscribe"
                 className="transform hover:scale-105 transition-transform duration-200 shadow-md"
-              />
+              /> */}
+              {/* CTAButton instance commented out - replaced with a standard button for now */}
+              <button type="submit" className="bg-brand-accent text-white hover:bg-opacity-90 focus:ring-brand-accent font-semibold rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all duration-300 ease-in-out inline-flex items-center justify-center shadow-md hover:shadow-lg px-6 py-3 text-base transform hover:scale-105 transition-transform duration-200 shadow-md">
+                Subscribe Now
+              </button>
             </form>
             <p className="text-xs text-text-tertiary mt-4">We respect your privacy. Unsubscribe at any time.</p>
           </div>
         </motion.section>
 
+        {/* Featured AI Tools Section */}
         <motion.section 
           className="py-20 md:py-28 bg-background-alt px-4 sm:px-6 lg:px-8"
           initial="hidden"
@@ -109,6 +117,7 @@ const HomePage: React.FC = () => {
           </div>
         </motion.section>
 
+        {/* Main CTA Section */}
         <motion.section 
           className="py-20 md:py-28 bg-brand-secondary text-white px-4 sm:px-6 lg:px-8"
           initial="hidden"
@@ -121,17 +130,22 @@ const HomePage: React.FC = () => {
             <p className="text-lg sm:text-xl mb-10 leading-relaxed">
               Unlock the full potential of AI and take your productivity to the next level. Get started with our recommended tools today!
             </p>
-            <CTAButton 
+            {/* <CTAButton 
               href="#affiliate-link-main" 
               text="Get Top AI Tool (Affiliate)" 
               variant="outline"
               size="lg"
               id="cta-main-affiliate"
               className="border-white text-white hover:bg-white hover:text-brand-secondary transform hover:scale-105 transition-all duration-200 shadow-lg"
-            />
+            /> */}
+            {/* CTAButton instance commented out - replaced with a standard link for now */}
+            <a href="#affiliate-link-main" className="border-2 border-white text-white hover:bg-white hover:text-brand-secondary font-semibold rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all duration-300 ease-in-out inline-flex items-center justify-center shadow-md hover:shadow-lg px-8 py-4 text-lg transform hover:scale-105 transition-all duration-200 shadow-lg">
+              Get Top AI Tool (Affiliate)
+            </a>
           </div>
         </motion.section>
 
+        {/* Special Offer Section */}
         <motion.section 
           className="py-16 bg-background-main px-4 sm:px-6 lg:px-8"
           initial="hidden"
@@ -142,10 +156,15 @@ const HomePage: React.FC = () => {
           <div className="container mx-auto text-center p-8 border-2 border-dashed border-brand-accent rounded-xl max-w-2xl">
             <h3 className="text-2xl sm:text-3xl font-semibold font-heading text-brand-accent mb-4">Special Offer!</h3>
             <p className="text-text-secondary mb-6 leading-relaxed">Limited time discount on our premium AI guide. (Psychological Trigger Placeholder)</p>
-            <CTAButton href="#special-offer" text="Claim Discount Now" variant="primary" id="cta-special-offer" className="transform hover:scale-105 transition-transform duration-200" />
+            {/* <CTAButton href="#special-offer" text="Claim Discount Now" variant="primary" id="cta-special-offer" className="transform hover:scale-105 transition-transform duration-200" /> */}
+            {/* CTAButton instance commented out - replaced with a standard link for now */}
+            <a href="#special-offer" className="bg-brand-accent text-white hover:bg-opacity-90 focus:ring-brand-accent font-semibold rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all duration-300 ease-in-out inline-flex items-center justify-center shadow-md hover:shadow-lg px-6 py-3 text-base transform hover:scale-105 transition-transform duration-200">
+              Claim Discount Now
+            </a>
           </div>
         </motion.section>
 
+        {/* Social Proof Section */}
         <motion.section 
           className="py-20 md:py-28 bg-background-alt px-4 sm:px-6 lg:px-8"
           initial="hidden"
